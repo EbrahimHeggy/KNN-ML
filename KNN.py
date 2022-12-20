@@ -10,7 +10,7 @@ import random
 
 data = pd.read_csv('BankNote_Authentication.csv')
 data = np.array(data)
-#np.random.shuffle(data)
+np.random.shuffle(data)
 
 m = 960
 # In[135]:
@@ -103,7 +103,7 @@ def run (k):
 # In[140]:
 
 
-for i in range(1,12):
+for i in range(1,10):
     print("k value:",i)
     acc = run(i)
     print("Number of correctly classified instances :", acc, " Total number of instances :" ,test_size)
