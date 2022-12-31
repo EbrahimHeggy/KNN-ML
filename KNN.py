@@ -13,14 +13,16 @@ data = np.array(data)
 np.random.shuffle(data)
 
 m = 960
+
+
 # In[135]:
 
 
 mean_list = []
-for i in range(m):
+for i in range(4):
     mean=0.0
-    for j in range(4):
-        mean = mean + data[i][j]
+    for j in range(m):
+        mean = mean + data[j][i]
     mean=mean/m
     mean_list.append(mean)
 
@@ -29,10 +31,10 @@ for i in range(m):
 
 
 std_list = []
-for i in range(m):
+for i in range(4):
     std=0.0
-    for j in range(4):
-        std= std+ ((data[i][j]-mean_list[j])*(data[i][j]-mean_list[j]))
+    for j in range(m):
+        std= std+ ((data[j][i]-mean_list[i])*(data[j][i]-mean_list[i]))
     std=std/m
     std= math.sqrt(std)
     std_list.append(std)
@@ -42,10 +44,9 @@ for i in range(m):
 
 
 size = len(data)
-for i in range(m):
-    for j in range(4):
-        data[i][j] = ((data[i][j]-mean_list[j])/std_list[j])
-
+for i in range(4):
+    for j in range(size):
+        data[j][i] = ((data[j][i]-mean_list[i])/std_list[i])
 data_train = data[:960]
 data_test = data[960:]        
 
